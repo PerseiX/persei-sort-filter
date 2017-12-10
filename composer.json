@@ -1,20 +1,23 @@
 {
-	"name"       : "persei/persei-sort-filter",
-	"type"       : "Bundle",
-	"require"    : {
-		"php"                                 : ">=7.1",
-		"doctrine/doctrine-bundle"            : "^1.6",
-		"nelmio/api-doc-bundle"               : "^2.13",
-		"symfony/symfony"                     : "3.3.*",
-		"doctrine/orm"                        : "^2.5"
-	},
-	"require-dev": {
-		"sensio/generator-bundle": "^3.0",
-		"symfony/phpunit-bridge" : "^3.0"
+	"authors" : [
+		{
+			"name" : "Kamil Rytel",
+			"email": "kamilrytel2@gmail.com",
+			"role" : "Developer"
+		}
+	],
+	"name"    : "persei/persei-sort-filter",
+	"type"    : "Bundle",
+	"require" : {
+		"php"                     : ">=7.1",
+		"doctrine/doctrine-bundle": "^1.6",
+		"nelmio/api-doc-bundle"   : "^2.13",
+		"symfony/symfony"         : "3.3.*",
+		"doctrine/orm"            : "^2.5"
 	},
 	"autoload": {
 		"psr-4": {
-			"ApiBundle\\": "src/"
+			"SortAndFilterBundle\\": "src/"
 		}
 	}
 }
