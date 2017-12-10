@@ -1,0 +1,32 @@
+services:
+    api.sort_annotation_reader:
+        class: SortAndFilterBundle\Annotation\SortAnnotationReader
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - '@annotation_reader'
+            - '@available_field_to_sort'
+
+    api.sort_listener:
+        class: SortAndFilterBundle\Annotation\SortListener
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - '@available_field_to_sort'
+            - '@sort_detail'
+
+    api.nelmio_api_doc.sort_handler:
+        class: SortAndFilterBundle\Documentation\SortAnnotationHandler
+        tags:
+            - { name: nelmio_api_doc.extractor.handler }
+
+    sort_detail:
+        class: SortAndFilterBundle\Model\SortDetail
+
+    available_field_to_sort:
+        class: SortAndFilterBundle\Model\AvailableSorting
+
+    custom_sorting:
+        class: SortAndFilterBundle\Services\CustomSorting
+        arguments:
+            - '@sort_detail'
