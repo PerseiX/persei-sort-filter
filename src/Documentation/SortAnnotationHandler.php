@@ -23,12 +23,18 @@ class SortAnnotationHandler implements HandlerInterface
 	public function handle(ApiDoc $annotation, array $annotations, Route $route, \ReflectionMethod $method)
 	{
 		foreach ($annotations as $annotationElement) {
-			if ($annotationElement instanceof Sort) {
-				$annotation->addParameter('sortBy[]', [
-					"dataType"    => "array",
-					"required"    => false,
-					"description" => "Sort element"
-				]);
+			foreach ($annotations as $anno) {
+				if (true === $anno instanceof Sort) {
+					foreach ($anno->getAvailableField() as $field) {
+						if ($annotationElement instanceof Sort) {
+							$annotation->addParameter('sortBy[' . $field . ']', [
+								"dataType"    => "array",
+								"required"    => false,
+								"description" => "ASC|DESC",
+							]);
+						}
+					}
+				}
 			}
 		}
 	}
